@@ -1,0 +1,14 @@
+{
+  "name": "computer-use-agent",
+  "version": "1.0.0",
+  "description": "A JavaScript implementation of the OpenAI Computer-Using Agent.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "openai": "^4.0.0",
+    "playwright": "^1.42.0"
+  }
+}
