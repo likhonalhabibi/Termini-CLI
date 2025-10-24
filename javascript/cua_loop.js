@@ -97,6 +97,13 @@ async function computerUseLoop(instance, response) {
     const computerCall = computerCalls[0];
     const lastCallId = computerCall.call_id;
     const action = computerCall.action;
+    const pendingSafetyChecks = computerCall.pending_safety_checks;
+
+    // In a real application, you would present the safety checks to the user here.
+    // For this example, we'll just acknowledge them automatically.
+    if (pendingSafetyChecks && pendingSafetyChecks.length > 0) {
+      console.log(`Acknowledging ${pendingSafetyChecks.length} safety checks.`);
+    }
 
     // Execute the action (function defined in step 3)
     handleModelAction(instance, action);
@@ -122,6 +129,7 @@ async function computerUseLoop(instance, response) {
         {
           call_id: lastCallId,
           type: "computer_call_output",
+          acknowledged_safety_checks: pendingSafetyChecks,
           output: {
             type: "input_image",
             image_url: `data:image/png;base64,${screenshotBase64}`,

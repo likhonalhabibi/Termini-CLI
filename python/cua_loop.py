@@ -85,6 +85,12 @@ def computer_use_loop(instance, response):
         computer_call = computer_calls[0]
         last_call_id = computer_call.call_id
         action = computer_call.action
+        pending_safety_checks = computer_call.pending_safety_checks
+
+        # In a real application, you would present the safety checks to the user here.
+        # For this example, we'll just acknowledge them automatically.
+        if pending_safety_checks:
+            print(f"Acknowledging {len(pending_safety_checks)} safety checks.")
 
         # Execute the action (function defined in step 3)
         handle_model_action(instance, action)
@@ -110,6 +116,7 @@ def computer_use_loop(instance, response):
                 {
                     "call_id": last_call_id,
                     "type": "computer_call_output",
+                    "acknowledged_safety_checks": pending_safety_checks,
                     "output": {
                         "type": "input_image",
                         "image_url": f"data:image/png;base64,{screenshot_base64}"

@@ -9,10 +9,10 @@ import { Buffer } from 'buffer';
 const client = new OpenAI();
 
 async function main() {
-    """
-    Main function to initialize the browser, send the initial request,
-    and start the computer-using agent loop.
-    """
+    /**
+     * Main function to initialize the browser, send the initial request,
+     * and start the computer-using agent loop.
+     */
     const userPrompt = "Navigate to bing.com and search for the latest news on OpenAI.";
 
     const browser = await chromium.launch({
